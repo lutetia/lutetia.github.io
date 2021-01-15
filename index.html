@@ -6,5 +6,16 @@
 <li>Item 2</li>
 <li>Item 3</li>
 </ul>
+<script>
+var counter= 4;
+
+function addelement() {
+var completelist= document.getElementById("thelist");
+
+completelist.innerHTML += "<li>Item " + counter + "</li>";
+counter++;
+}
+</script>
+
 
 

@@ -2,19 +2,22 @@
 
 <br/><br/>
 <ul id="thelist">
-<li>Item 1</li>
-<li>Item 2</li>
-<li>Item 3</li>
 </ul>
 <script>
-var counter= 4;
+  var counter= 0;
+  var names= new array("Jolanta", "Dovydas");
 
-function addelement() {
-var completelist= document.getElementById("thelist");
+  function addelement() 
+  {
+    var completelist= document.getElementById("thelist");
 
-completelist.innerHTML += "<li>Item " + counter + "</li>";
-counter++;
-}
+    completelist.innerHTML += "<li> " + names[counter] + "</li>";
+    counter++;
+    if (counter >= names.length)
+    {
+      counter = 0;
+    }
+  }
 </script>
 
 

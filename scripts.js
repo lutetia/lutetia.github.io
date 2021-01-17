@@ -84,9 +84,10 @@
     index = 3;
     var dataHTMLString = '<ul>' +
       closestDatesArray.map(function(dat){
-        if (dat.active)
-          return '<li>' + dat.vardas + '&nbsp &nbsp &nbsp &nbsp &nbsp' + dat.pavarde + '<br/>' +
-          dat.metai + '-' + dat.menuo + '-' + dat.diena + '</li>'; 
+        console.log(dat[1],dataNames[dat[1]]);
+        if (dataNames[dat[1]].active && --index)
+          return '<li>' + dataNames[dat[1]].vardas + '&nbsp &nbsp &nbsp &nbsp &nbsp' + dataNames[dat[1]].pavarde + '<br/>' +
+          dataNames[dat[1]].metai + '-' + dataNames[dat[1]].menuo + '-' + dataNames[dat[1]].diena + '</li>'; 
         else
           return "";
       }).join();

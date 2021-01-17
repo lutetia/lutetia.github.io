@@ -63,9 +63,7 @@
     var app = document.getElementById('laikas');
     let now = new Date();
     let currentYear = now.getFullYear();
-    let min = Infinity;
     let index = 0;
-    let minIndex = -1;
     var closestDatesArray = [];
 
     dataNames.forEach(function(dat){
@@ -74,27 +72,26 @@
       {
         d = new Date(currentYear + 1, dat.menuo - 1, dat.diena);
       }
-      if (dat.active && d < min)
-      {
-        min = d;
-        minIndex = index;
-      }
-      closestDatesArray.push([d, index]);
-      ++index;
+      closestDatesArray.push([d, index++]);
     });
-console.table(closestDatesArray);
+
     closestDatesArray.sort(function(a, b){
       let x = new Date(a[0]);
       let y = new Date(b[0]);
       return x - y;
     });
     
-    console.table(closestDatesArray);
-
-    var dataHTMLString = '<ul>' + 
-          '<li>'+ dataNames[minIndex].vardas + '&nbsp &nbsp &nbsp &nbsp &nbsp' + dataNames[minIndex].pavarde + '<br/>' +
-          dataNames[minIndex].metai + '-' + dataNames[minIndex].menuo + '-' + dataNames[minIndex].diena + '</li>' + 
-          '</ul>';
+    index = 3;
+    var dataHTMLString = '<ul>' +
+      closestDatesArray.map(function(dat){
+        if (dat.active && --index)
+          return '<li>' + dat.vardas + '&nbsp &nbsp &nbsp &nbsp &nbsp' + dat.pavarde + '<br/>' +
+          dat.metai + '-' + dat.menuo + '-' + dat.diena + '</li>'; 
+        else
+          return "";
+      }).join();
+      + '</ul>';
+    
     app.innerHTML = dataHTMLString;
   };
 

@@ -1,46 +1,42 @@
-  var books = [
-    {
-      "title": "Cracking the coding interview",
-      "subtitle":"189 programming questions and solutions",
-      "author":"Gayle Laakmann McDowell",
-      "category":"Programming",
-      "publisher":"CareerCup, LLC"
-    },
-    {
-      "title": "No friend but the mountains",
-      "subtitle":"Writing from manu prison",
-      "author":"Behrouz Boochani",
-      "category":"Literature",
-      "publisher":"Pan Macmillan Australia"
-    },
-    {
-      "title": "Indian Harvest",
-      "subtitle":"Classic and contemporary vegetarian dishes",
-      "author":"Vikas Khanna",
-      "category":"Cuisine",
-      "publisher":"Bloomsbury USA"
-    },
+  var dataNames = [
+    {"vardas": "Albinas","pavarde":"J","metai":"1948","menuo":"10","diena":"25",},
+    {"vardas": "Marija","pavarde":"J","metai":"1950","menuo":"3","diena":"13",},
+    {"vardas": "Robertas","pavarde":"J","metai":"1981","menuo":"4","diena":"9",},
+    {"vardas": "Elija","pavarde":"J","metai":"1948","menuo":"10","diena":"25",},
+    {"vardas": "Laura","pavarde":"J","metai":"1948","menuo":"10","diena":"25",},
+    {"vardas": "Jolanta","pavarde":"Laz","metai":"1948","menuo":"10","diena":"25",},
+    {"vardas": "Jonas","pavarde":"Laz","metai":"1948","menuo":"10","diena":"25",},
+    {"vardas": "Stase","pavarde":"Vait","metai":"1948","menuo":"10","diena":"25",},
+    {"vardas": "Dovydas","pavarde":"J","metai":"1948","menuo":"10","diena":"25",},
+    {"vardas": "Janyte","pavarde":"J","metai":"1948","menuo":"10","diena":"25",},
+    {"vardas": "Denis","pavarde":"J","metai":"1948","menuo":"10","diena":"25",},
+    {"vardas": "Viktoras","pavarde":"J","metai":"1948","menuo":"10","diena":"25",},
+    {"vardas": "Vytas","pavarde":"Sim","metai":"1948","menuo":"10","diena":"25",},
+    {"vardas": "Onute","pavarde":"Sim","metai":"1948","menuo":"10","diena":"25",},
+    {"vardas": "Vaidas","pavarde":"Sim","metai":"1948","menuo":"10","diena":"25",},
+    {"vardas": "Kestas","pavarde":"Sim","metai":"1948","menuo":"10","diena":"25",},
+    {"vardas": "Neilandas","pavarde":"Sim","metai":"1948","menuo":"10","diena":"25",},
+    {"vardas": "Stefanija","pavarde":"Sim","metai":"1948","menuo":"10","diena":"25",},
+    {"vardas": "Jonas","pavarde":"Sim","metai":"1948","menuo":"10","diena":"25",},
+   
   ];
   
   var render = function(data) {
     var app = document.getElementById('app');
-    var booksHTMLString = '<ul>'+
-      data.map(function(book){
+    var dataHTMLString = '<ul>'+
+      data.map(function(dat){
         return '<li>'+
-                '<strong>Title: </strong>' + book.title + '<br/>' +
-                '<strong>Subtitle: </strong>' + book.subtitle + '<br/>' +
-                '<strong>Author: </strong>' + book.author + '<br/>' +
-                '<strong>Category: </strong>' + book.category + '<br/>' +
-                '<strong>Publisher: </strong>' + book.publisher + '<br/>' +
+                '<strong>Vardas: </strong>' + dat.vardas +
+                '<strong>Pavarde: </strong>' + dat.pavarde + '<br/>' +
+                '<strong>Gime: </strong>' + dat.metai + '-' + dat.menuo + '-' + dat.diena + '<br/>' +
               '</li>';
       }).join('');
       + '</ul>';
 
-    app.innerHTML = booksHTMLString;
+    app.innerHTML = dataHTMLString;
   }
 
   var handleSearch = function(event) {
-    event.preventDefault();
     var searchTerm = event.target.value;
     var tokens = searchTerm
                   .toLowerCase()
@@ -50,23 +46,23 @@
                   });
    if(tokens.length) {
     var searchTermRegex = new RegExp(tokens.join('|'), 'gim');
-    var filteredList = books.filter(function(book){
-      var bookString = '';
-      for(var key in book) {
-        if(book.hasOwnProperty(key) && book[key] !== '') {
-          bookString += book[key].toString().toLowerCase().trim() + ' ';
+    var filteredList = dataNames.filter(function(dat){
+      var dataString = '';
+      for(var key in dat) {
+        if(dat.hasOwnProperty(key) && dat[key] !== '') {
+          dataString += dat[key].toString().toLowerCase().trim() + ' ';
         }
       }
-      return bookString.match(searchTermRegex);
+      return dataString.match(searchTermRegex);
     });
     render(filteredList);
    }
   };
 
-  document.addEventListener('reset', function(event){
-    event.preventDefault();
-    render(books);
-  });
+  var searchInput = document.querySelector("#search");
+  searchInput.addEventListener("keyup",handleSearch);
 
-  var search_input = document.querySelector("#search");
-  search_input.addEventListener("keyup",handleSearch);
+  var listData = document.querySelector("#reset");
+  listData.addEventListener("click",function(event){
+    render(dataNames);
+  });

@@ -134,7 +134,7 @@
   };
 
   var prmpt = prompt("...");
-  if (prmpt == "letmein") {
+  if (prmpt == window.atob("MTk1MA==")) {
     var searchInput = document.querySelector("#search");
     searchInput.addEventListener("keyup",handleSearch);
 

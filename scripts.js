@@ -7,7 +7,7 @@
     {"vardas": "Jolanta","pavarde":"Laz","metai":"1948","menuo":"10","diena":"25","active":"1",},
     {"vardas": "Jonas","pavarde":"Laz","metai":"1948","menuo":"10","diena":"25","active":"1",},
     {"vardas": "Stase","pavarde":"Vait","metai":"1948","menuo":"10","diena":"25","active":"1",},
-    {"vardas": "Dovydas","pavarde":"J","metai":"1948","menuo":"2","diena":"25","active":"1",},
+    {"vardas": "Dovydas","pavarde":"J","metai":"1948","menuo":"4","diena":"25","active":"1",},
     {"vardas": "Janyte","pavarde":"J","metai":"1948","menuo":"1","diena":"2","active":"1",},
     {"vardas": "Denis","pavarde":"J","metai":"1948","menuo":"10","diena":"25","active":"1",},
     {"vardas": "Viktoras","pavarde":"J","metai":"1948","menuo":"10","diena":"25","active":"1",},
@@ -15,7 +15,7 @@
     {"vardas": "Onute","pavarde":"Sim","metai":"1948","menuo":"10","diena":"25","active":"1",},
     {"vardas": "Vaidas","pavarde":"Sim","metai":"1948","menuo":"10","diena":"25","active":"1",},
     {"vardas": "Kestas","pavarde":"Sim","metai":"1948","menuo":"10","diena":"25","active":"1",},
-    {"vardas": "Neilandas","pavarde":"Sim","metai":"1948","menuo":"1","diena":"20","active":"1",},
+    {"vardas": "Neilandas","pavarde":"Sim","metai":"1948","menuo":"12","diena":"29","active":"1",},
     {"vardas": "Stefanija","pavarde":"Sim","metai":"1948","menuo":"1","diena":"18","active":"",},
     {"vardas": "Jonas","pavarde":"Sim","metai":"1948","menuo":"10","diena":"25","active":"1",},
    
@@ -66,7 +66,7 @@
     let min = Infinity;
     let index = 0;
     let minIndex = -1;
-    var closestDatesArray = [[]];
+    var closestDatesArray = [];
 
     dataNames.forEach(function(dat){
       let d = new Date(currentYear, dat.menuo - 1, dat.diena);
@@ -83,6 +83,14 @@
       ++index;
     });
 console.table(closestDatesArray);
+    closestDatesArray.sort(function(a, b){
+      let x = new Date(a[0]);
+      let y = new Date(b[0]);
+      return x - y;
+    });
+    
+    console.table(closestDatesArray);
+
     var dataHTMLString = '<ul>' + 
           '<li>'+ dataNames[minIndex].vardas + '&nbsp &nbsp &nbsp &nbsp &nbsp' + dataNames[minIndex].pavarde + '<br/>' +
           dataNames[minIndex].metai + '-' + dataNames[minIndex].menuo + '-' + dataNames[minIndex].diena + '</li>' + 

@@ -26,15 +26,15 @@
     var dataHTMLString = '<ul>'+
       data.map(function(dat){
         return '<li>'+
-                '<strong>Vardas: </strong>' + dat.vardas +
-                '<strong>Pavarde: </strong>' + dat.pavarde + '<br/>' +
-                '<strong>Gime: </strong>' + dat.metai + '-' + dat.menuo + '-' + dat.diena + '<br/>' +
+                dat.vardas +
+                '  ' + dat.pavarde + '<br/>' +
+                dat.metai + '-' + dat.menuo + '-' + dat.diena + '<br/>' +
               '</li>';
       }).join('');
       + '</ul>';
 
     app.innerHTML = dataHTMLString;
-  }
+  };
 
   var handleSearch = function(event) {
     var searchTerm = event.target.value;
@@ -59,6 +59,35 @@
    }
   };
 
+  var handleClosestDates = function(event) {
+    var app = document.getElementById('laikas');
+    let now = new Date();
+    let currentYear = now.getFullYear();
+    let min = Infinity;
+    let index = 0;
+    let minIndex = -1;
+
+    dataNames.forEach(function(dat){
+      let d = new Date(currentYear, dat.menuo, dat.diena);
+
+      if (d >= now && d < min)
+      {
+        min = d;
+        minIndex = index;
+      }
+      ++index;
+    });
+
+    if (minIndex >= 0) 
+    {
+      var dataHTMLString = '<ul>' + 
+          '<li>'+ dataNames[minIndex].vardas + dataNames[minIndex].pavarde + '<br/>' +
+          dataNames[minIndex].metai + '-' + dataNames[minIndex].menuo + '-' + dataNames[minIndex].diena + '</li>' + 
+          '</ul>';
+      app.innerHTML = dataHTMLString;
+    }
+  };
+
   var searchInput = document.querySelector("#search");
   searchInput.addEventListener("keyup",handleSearch);
 
@@ -66,3 +95,5 @@
   listData.addEventListener("click",function(event){
     render(dataNames);
   });
+
+  window.addEventListener("load",handleClosestDates);

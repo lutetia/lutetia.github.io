@@ -133,12 +133,15 @@
     app.innerHTML = dataHTMLString;
   };
 
-  var searchInput = document.querySelector("#search");
-  searchInput.addEventListener("keyup",handleSearch);
+  var prmpt = prompt("...");
+  if (prmpt == "letmein") {
+    var searchInput = document.querySelector("#search");
+    searchInput.addEventListener("keyup",handleSearch);
 
-  var listData = document.querySelector("#reset");
-  listData.addEventListener("click",function(event){
-    render(dataNames);
-  });
+    var listData = document.querySelector("#reset");
+    listData.addEventListener("click",function(event){
+      render(dataNames);
+    });
 
-  window.addEventListener("load",handleClosestDates);
+    window.addEventListener("load",handleClosestDates);
+  }

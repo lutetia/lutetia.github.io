@@ -66,7 +66,7 @@
     let min = Infinity;
     let index = 0;
     let minIndex = -1;
-    var closestDatesArray = [];
+    var closestDatesArray = [[]];
 
     dataNames.forEach(function(dat){
       let d = new Date(currentYear, dat.menuo - 1, dat.diena);
@@ -79,17 +79,15 @@
         min = d;
         minIndex = index;
       }
+      closestDatesArray.push([d, index]);
       ++index;
     });
-
-    if (minIndex >= 0) 
-    {
-      var dataHTMLString = '<ul>' + 
+console.table(closestDatesArray);
+    var dataHTMLString = '<ul>' + 
           '<li>'+ dataNames[minIndex].vardas + '&nbsp &nbsp &nbsp &nbsp &nbsp' + dataNames[minIndex].pavarde + '<br/>' +
           dataNames[minIndex].metai + '-' + dataNames[minIndex].menuo + '-' + dataNames[minIndex].diena + '</li>' + 
           '</ul>';
-      app.innerHTML = dataHTMLString;
-    }
+    app.innerHTML = dataHTMLString;
   };
 
   var searchInput = document.querySelector("#search");

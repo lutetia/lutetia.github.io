@@ -1,23 +1,23 @@
   var dataNames = [
-    {"vardas": "Albinas","pavarde":"J","metai":"1948","menuo":"10","diena":"25","active":"1",},
-    {"vardas": "Marija","pavarde":"J","metai":"1950","menuo":"3","diena":"13","active":"1",},
-    {"vardas": "Robertas","pavarde":"J","metai":"1981","menuo":"4","diena":"9","active":"1",},
-    {"vardas": "Elija","pavarde":"J","metai":"1948","menuo":"10","diena":"25","active":"1",},
-    {"vardas": "Laura","pavarde":"J","metai":"1948","menuo":"10","diena":"25","active":"1",},
-    {"vardas": "Jolanta","pavarde":"Laz","metai":"1948","menuo":"10","diena":"25","active":"1",},
-    {"vardas": "Jonas","pavarde":"Laz","metai":"1948","menuo":"10","diena":"25","active":"1",},
-    {"vardas": "Stase","pavarde":"Vait","metai":"1948","menuo":"10","diena":"25","active":"1",},
-    {"vardas": "Dovydas","pavarde":"J","metai":"1948","menuo":"4","diena":"25","active":"1",},
-    {"vardas": "Janyte","pavarde":"J","metai":"1948","menuo":"1","diena":"2","active":"1",},
-    {"vardas": "Denis","pavarde":"J","metai":"1948","menuo":"10","diena":"25","active":"1",},
-    {"vardas": "Viktoras","pavarde":"J","metai":"1948","menuo":"10","diena":"25","active":"1",},
-    {"vardas": "Vytas","pavarde":"Sim","metai":"1948","menuo":"10","diena":"25","active":"1",},
-    {"vardas": "Onute","pavarde":"Sim","metai":"1948","menuo":"10","diena":"25","active":"1",},
-    {"vardas": "Vaidas","pavarde":"Sim","metai":"1948","menuo":"10","diena":"25","active":"1",},
-    {"vardas": "Kestas","pavarde":"Sim","metai":"1948","menuo":"10","diena":"25","active":"1",},
-    {"vardas": "Neilandas","pavarde":"Sim","metai":"1948","menuo":"12","diena":"29","active":"1",},
-    {"vardas": "Stefanija","pavarde":"Sim","metai":"1948","menuo":"1","diena":"18","active":"",},
-    {"vardas": "Jonas","pavarde":"Sim","metai":"1948","menuo":"10","diena":"25","active":"1",},
+    {"vardas": "Albinas","pavarde":"J","metai":"1948","menuo":"10","diena":"25","active":"1","correct":"1",},
+    {"vardas": "Marija","pavarde":"J","metai":"1950","menuo":"3","diena":"13","active":"1","correct":"1",},
+    {"vardas": "Robertas","pavarde":"J","metai":"1981","menuo":"4","diena":"9","active":"1","correct":"1",},
+    {"vardas": "Elija","pavarde":"J","metai":"1948","menuo":"10","diena":"25","active":"1","correct":"1",},
+    {"vardas": "Laura","pavarde":"J","metai":"1948","menuo":"10","diena":"25","active":"1","correct":"",},
+    {"vardas": "Jolanta","pavarde":"Laz","metai":"1948","menuo":"10","diena":"25","active":"1","correct":"",},
+    {"vardas": "Jonas","pavarde":"Laz","metai":"1948","menuo":"10","diena":"25","active":"1","correct":"",},
+    {"vardas": "Stase","pavarde":"Vait","metai":"1948","menuo":"10","diena":"25","active":"1","correct":"",},
+    {"vardas": "Dovydas","pavarde":"J","metai":"1948","menuo":"4","diena":"25","active":"1","correct":"",},
+    {"vardas": "Janyte","pavarde":"J","metai":"1948","menuo":"1","diena":"2","active":"1","correct":"",},
+    {"vardas": "Denis","pavarde":"J","metai":"1948","menuo":"10","diena":"25","active":"1","correct":"",},
+    {"vardas": "Viktoras","pavarde":"J","metai":"1948","menuo":"10","diena":"25","active":"1","correct":"",},
+    {"vardas": "Vytas","pavarde":"Sim","metai":"1948","menuo":"10","diena":"25","active":"1","correct":"",},
+    {"vardas": "Onute","pavarde":"Sim","metai":"1948","menuo":"10","diena":"25","active":"1","correct":"",},
+    {"vardas": "Vaidas","pavarde":"Sim","metai":"1948","menuo":"10","diena":"25","active":"1","correct":"",},
+    {"vardas": "Kestas","pavarde":"Sim","metai":"1948","menuo":"10","diena":"25","active":"1","correct":"",},
+    {"vardas": "Neilandas","pavarde":"Sim","metai":"1948","menuo":"12","diena":"29","active":"1","correct":"",},
+    {"vardas": "Stefanija","pavarde":"Sim","metai":"1921","menuo":"1","diena":"18","active":"","correct":"",},
+    {"vardas": "Jonas","pavarde":"Sim","metai":"1948","menuo":"10","diena":"25","active":"","correct":"",},
    
   ];
   
@@ -84,13 +84,12 @@
     index = 3;
     var dataHTMLString = '<ul>' +
       closestDatesArray.map(function(dat){
-        console.log(dat[1],dataNames[dat[1]]);
-        if (dataNames[dat[1]].active && --index)
+        if (dataNames[dat[1]].active && dataNames[dat[1]].correct && index-- > 0)
           return '<li>' + dataNames[dat[1]].vardas + '&nbsp &nbsp &nbsp &nbsp &nbsp' + dataNames[dat[1]].pavarde + '<br/>' +
           dataNames[dat[1]].metai + '-' + dataNames[dat[1]].menuo + '-' + dataNames[dat[1]].diena + '</li>'; 
         else
           return "";
-      }).join();
+      }).join('');
       + '</ul>';
     
     app.innerHTML = dataHTMLString;

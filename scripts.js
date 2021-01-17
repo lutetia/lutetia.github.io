@@ -15,8 +15,8 @@
     {"vardas": "Onute","pavarde":"Sim","metai":"1948","menuo":"10","diena":"25","active":"1",},
     {"vardas": "Vaidas","pavarde":"Sim","metai":"1948","menuo":"10","diena":"25","active":"1",},
     {"vardas": "Kestas","pavarde":"Sim","metai":"1948","menuo":"10","diena":"25","active":"1",},
-    {"vardas": "Neilandas","pavarde":"Sim","metai":"1948","menuo":"10","diena":"25","active":"1",},
-    {"vardas": "Stefanija","pavarde":"Sim","metai":"1948","menuo":"1","diena":"16","active":"",},
+    {"vardas": "Neilandas","pavarde":"Sim","metai":"1948","menuo":"1","diena":"20","active":"1",},
+    {"vardas": "Stefanija","pavarde":"Sim","metai":"1948","menuo":"1","diena":"18","active":"",},
     {"vardas": "Jonas","pavarde":"Sim","metai":"1948","menuo":"10","diena":"25","active":"1",},
    
   ];
@@ -66,11 +66,15 @@
     let min = Infinity;
     let index = 0;
     let minIndex = -1;
+    var closestDatesArray = [];
 
     dataNames.forEach(function(dat){
       let d = new Date(currentYear, dat.menuo - 1, dat.diena);
-
-      if (dat.active && d >= now && d < min)
+      if (d < now)
+      {
+        d = new Date(currentYear + 1, dat.menuo - 1, dat.diena);
+      }
+      if (dat.active && d < min)
       {
         min = d;
         minIndex = index;

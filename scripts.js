@@ -27,7 +27,7 @@
       data.map(function(dat){
         return '<li>'+
                 dat.vardas +
-                '      ' + dat.pavarde + '<br/>' +
+                '\t' + dat.pavarde + '<br/>' +
                 dat.metai + '-' + dat.menuo + '-' + dat.diena + '<br/>' +
               '</li>';
       }).join('');
@@ -68,7 +68,7 @@
     let minIndex = -1;
 
     dataNames.forEach(function(dat){
-      let d = new Date(currentYear, dat.menuo, dat.diena);
+      let d = new Date(currentYear, dat.menuo - 1, dat.diena);
 
       if (d >= now && d < min)
       {
@@ -81,7 +81,7 @@
     if (minIndex >= 0) 
     {
       var dataHTMLString = '<ul>' + 
-          '<li>'+ dataNames[minIndex].vardas + '      ' + dataNames[minIndex].pavarde + '<br/>' +
+          '<li>'+ dataNames[minIndex].vardas + '\t' + dataNames[minIndex].pavarde + '<br/>' +
           dataNames[minIndex].metai + '-' + dataNames[minIndex].menuo + '-' + dataNames[minIndex].diena + '</li>' + 
           '</ul>';
       app.innerHTML = dataHTMLString;

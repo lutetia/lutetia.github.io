@@ -55,6 +55,8 @@
     {"vardas": "Antanas","pavarde":"Cesnavicius","metai":"1951","menuo":"3","diena":"4","active":"1","correct":"1",},
     {"vardas": "Jurate","pavarde":"Kapociene","metai":"1967","menuo":"4","diena":"12","active":"1","correct":"1",},
     {"vardas": "Zina","pavarde":"Siriajeva","metai":"1954","menuo":"8","diena":"19","active":"1","correct":"1",},
+    {"vardas": "Nijole","pavarde":"Lukoseviciene","metai":"1951","menuo":"1","diena":"7","active":"1","correct":"",},
+   
   ];
   
   var render = function(data) {

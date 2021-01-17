@@ -27,7 +27,7 @@
       data.map(function(dat){
         return '<li>'+
                 dat.vardas +
-                '  ' + dat.pavarde + '<br/>' +
+                '      ' + dat.pavarde + '<br/>' +
                 dat.metai + '-' + dat.menuo + '-' + dat.diena + '<br/>' +
               '</li>';
       }).join('');
@@ -81,7 +81,7 @@
     if (minIndex >= 0) 
     {
       var dataHTMLString = '<ul>' + 
-          '<li>'+ dataNames[minIndex].vardas + dataNames[minIndex].pavarde + '<br/>' +
+          '<li>'+ dataNames[minIndex].vardas + '      ' + dataNames[minIndex].pavarde + '<br/>' +
           dataNames[minIndex].metai + '-' + dataNames[minIndex].menuo + '-' + dataNames[minIndex].diena + '</li>' + 
           '</ul>';
       app.innerHTML = dataHTMLString;

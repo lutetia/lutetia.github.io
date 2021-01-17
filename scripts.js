@@ -84,7 +84,7 @@
     index = 3;
     var dataHTMLString = '<ul>' +
       closestDatesArray.map(function(dat){
-        if (dat.active && --index)
+        if (dat.active)
           return '<li>' + dat.vardas + '&nbsp &nbsp &nbsp &nbsp &nbsp' + dat.pavarde + '<br/>' +
           dat.metai + '-' + dat.menuo + '-' + dat.diena + '</li>'; 
         else
